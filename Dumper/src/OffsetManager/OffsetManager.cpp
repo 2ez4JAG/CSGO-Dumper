@@ -100,7 +100,7 @@ namespace Dumper
             LogToStringStream( "BaseEntity", "m_bMoveType", 0x258, ss );
 
             DumpPatternOffset( "ClientState", "m_dwClientState", "engine.dll",
-                               "A1 ? ? ? ? F3 0F 11 80 ? ? ? ? D9 46 04 D9 05",
+                               "A1 ? ? ? ? 33 D2 6A 00 6A 00 33 C9 89 B0",
                                Remote::SignatureType_t::READ | Remote::SignatureType_t::SUBTRACT, 0x1, 0x0, ss );
 
             DumpPatternOffset( "ClientState", "m_dwLocalPlayerIndex", "engine.dll",
@@ -124,15 +124,15 @@ namespace Dumper
                                Remote::SignatureType_t::READ, 0x1, 0x0, ss );
 
             DumpPatternOffset( "ClientState", "m_dwPlayerInfo", "engine.dll",
-                               "8B 88 ? ? ? ? 8B 01 8B 40 ? FF D0 8B F8",
+                               "8B 89 ? ? ? ? 85 C9 0F 84 ? ? ? ? 8B 01",
                                Remote::SignatureType_t::READ, 0x2, 0x0, ss );
 
             DumpPatternOffset( "ClientState", "m_dwViewAngles", "engine.dll",
                                "F3 0F 11 80 ? ? ? ? D9 46 04 D9 05 ? ? ? ?",
                                Remote::SignatureType_t::READ, 0x4, 0x0, ss );
 
-            DumpPatternOffset( "EngineRender", "m_dwViewMatrix", "client.dll",
-                               "81 C6 ? ? ? ? 88 45 9A 0F B6 C0",
+            DumpPatternOffset( "EngineRender", "m_dwViewMatrix", "client.dll", 
+                               "0F 10 05 ? ? ? ? 8D 85 ? ? ? ? B9",
                                Remote::SignatureType_t::READ | Remote::SignatureType_t::SUBTRACT, 0x352, 0xB0, ss );
 
             DumpPatternOffset( "EngineRender", "m_dwEnginePosition", "engine.dll",
@@ -154,64 +154,64 @@ namespace Dumper
                                Remote::SignatureType_t::READ | Remote::SignatureType_t::SUBTRACT, 0x1, 0x0, ss );
 
             DumpPatternOffset( "WeaponTable", "m_dwWeaponTable", "client.dll",
-                               "A1 ? ? ? ? 0F B7 C9 03 C9 8B 44 ? 0C C3",
+                               "B9 ? ? ? ? 6A 00 FF 50 08 C3",
                                Remote::SignatureType_t::READ | Remote::SignatureType_t::SUBTRACT, 0x1, 0x0, ss );
 
             DumpPatternOffset( "WeaponTable", "m_dwWeaponTableIndex", "client.dll",
-                               "66 8B 8E ? ? ? ? E8 ? ? ? ? 05 ? ? ? ? 50",
+                               "39 86 ? ? ? ? 74 06 89 86 ? ? ? ? 8B 86",
                                Remote::SignatureType_t::READ, 0x3, 0x0, ss );
 
             DumpPatternOffset( "Extra", "m_dwInput", "client.dll",
-                               "B9 ? ? ? ? FF 75 08 E8 ? ? ? ? 8B 06",
+                               "B9 ? ? ? ? F3 0F 11 04 24 FF 50 10",
                                Remote::SignatureType_t::READ | Remote::SignatureType_t::SUBTRACT, 0x1, 0x0, ss );
 
             DumpPatternOffset( "Extra", "m_dwGlobalVars", "engine.dll",
-                               "8B 0D ? ? ? ? 83 C4 04 8B 01 68 ? ? ? ? FF 35",
+                               "68 ? ? ? ? 68 ? ? ? ? FF 50 08 85 C0",
                                Remote::SignatureType_t::READ | Remote::SignatureType_t::SUBTRACT, 0x12, 0x0, ss );
 
             DumpPatternOffset( "Extra", "m_dwGlowObject", "client.dll",
-                               "A1 ? ? ? ? A8 01 75 4E 0F 57 C0",
+                               "A1 ? ? ? ? A8 01 75 4B",
                                Remote::SignatureType_t::READ | Remote::SignatureType_t::SUBTRACT, 0x58, 0x0, ss );
 
             DumpPatternOffset( "Extra", "m_dwForceJump", "client.dll",
-                               "89 15 ? ? ? ? 8B 15 ? ? ? ? F6 C2 03 74 03 83 CE 08",
+                               "8B 0D ? ? ? ? 8B D6 8B C1 83 CA 02",
                                Remote::SignatureType_t::READ | Remote::SignatureType_t::SUBTRACT, 0x2, 0x0, ss );
 
             DumpPatternOffset( "Extra", "m_dwForceAttack", "client.dll"
-                               , "89 15 ? ? ? ? 8B 15 ? ? ? ? F6 C2 03 74 03 83 CE 04",
+                               , "89 0D ? ? ? ? 8B 0D ? ? ? ? 8B F2 8B C1 83 CE 04",
                                Remote::SignatureType_t::READ | Remote::SignatureType_t::SUBTRACT, 0x2, 0x0, ss );
 			
             DumpPatternOffset( "Extra", "m_dwForceAttack2", "client.dll"
-                               , "89 15 ? ? ? ? 8B 15 ? ? ? ? F6 C2 03 74 06 81 CE ? 20 ? ? A9 ? 20 ? ? BF FD FF FF FF",
+                               , "89 0D ? ? ? ? 8B 0D ? ? ? ? 8B F2 8B C1 83 CE 04",
                                Remote::SignatureType_t::READ | Remote::SignatureType_t::SUBTRACT, 0x2, 0x0, ss );
 
 			DumpPatternOffset( "Extra", "m_dwForceForward", "client.dll"
-                               , "8B 15 ? ? ? ? F6 C2 03 74 03 83 CE 08 A8 08 BF FD FF FF FF",
+                               , "55 8B EC 51 53 8A 5D 08",
                                Remote::SignatureType_t::READ | Remote::SignatureType_t::SUBTRACT, 0x2, 0x0, ss );
 			
             DumpPatternOffset( "Extra", "m_dwForceBackward", "client.dll"
-                               , "8B 15 ? ? ? ? F6 C2 03 74 03 83 CE 10 A8 10 BF FD FF FF FF",
+                               , "55 8B EC 51 53 8A 5D 08",
                                Remote::SignatureType_t::READ | Remote::SignatureType_t::SUBTRACT, 0x2, 0x0, ss );
 			
             DumpPatternOffset( "Extra", "m_dwForceLeft", "client.dll"
-                               , "89 15 ? ? ? ? 8B 15 ? ? ? ? F6 C2 03 74 06 81 CE ? 04 ? ? A9 ? 04 ? ? BF FD FF FF FF",
+                               , "55 8B EC 51 53 8A 5D 08",
                                Remote::SignatureType_t::READ | Remote::SignatureType_t::SUBTRACT, 0x2, 0x0, ss );
 
             DumpPatternOffset( "Extra", "m_dwForceRight", "client.dll"
-                               , "89 15 ? ? ? ? 8B 15 ? ? ? ? F6 C2 03 74 06 81 CE ? 08 ? ? A9 ? 08 ? ? BF FD FF FF FF",
+                               , "55 8B EC 51 53 8A 5D 08",
                                Remote::SignatureType_t::READ | Remote::SignatureType_t::SUBTRACT, 0x2, 0x0, ss );
 							   
 	    DumpPatternOffset( "Extra", "m_pSensitivity", "client.dll"
-			      , "6A 01 51 C7 04 24 17 B7 D1 38 B9",
+			      , "81 F9 ? ? ? ? 75 1D F3 0F 10 05 ? ? ? ? F3 0F 11 44 24 ? 8B 44 24 18 35 ? ? ? ? 89 44 24 0C EB 0B",
                                Remote::SignatureType_t::READ | Remote::SignatureType_t::SUBTRACT, 0xB, 0x0, ss );
 
             DumpPatternOffset( "Extra", "m_dwSensitivity", "client.dll"
-			      , "6A 01 51 C7 04 24 17 B7 D1 38 B9",
+			      , "81 F9 ? ? ? ? 75 1D F3 0F 10 05 ? ? ? ? F3 0F 11 44 24 ? 8B 44 24 18 35 ? ? ? ? 89 44 24 0C EB 0B",
                                Remote::SignatureType_t::READ | Remote::SignatureType_t::SUBTRACT, 0xB, 0x2C, ss );
 		   
 
             DumpPatternOffset( "Extra", "m_dwMouseEnable", "client.dll",
-                               "F3 0F 10 05 ? ? ? ? EB 17 8B 01 8B 40 30 FF D0 F3 0F 10 0D",
+                               "B9 ? ? ? ? FF 50 34 85 C0 75 10",
                                Remote::SignatureType_t::READ | Remote::SignatureType_t::SUBTRACT, 0x4, 0x5C, ss );
 
             std::ofstream( "OffsetManager.txt" ) << ss.str();
